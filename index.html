@@ -1,0 +1,25 @@
+<html>
+    <head>
+    </head>
+    <body>
+      <h1>Server log</h1>
+      <ul id="log-list"></ul>
+      <script>
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.on('inbound:log', (e, log) => {
+            //console.log(log);
+            const log_item = document.createElement('p');
+            const log_text = document.createTextNode(log);
+            log_item.appendChild(log_text);
+            log_item.addEventListener('click', () => {
+              ipcRenderer.send('log:selected', log);
+            });
+            //document.body.appendChild(log_item);
+            document.getElementById("log-list").appendChild(log_item); 
+          });
+          ipcRenderer.on('start', (event, message) => {
+            console.log(message);
+          })
+      </script>
+    </body>
+  </html>

@@ -1,0 +1,13 @@
+<html>
+    <head></head>
+    <body></body>
+    <script>
+        const {ipcRenderer} = require('electron');
+        ipcRenderer.on('log:selected', (event, message) => {
+            const log_item = document.createElement('h1');
+            const log_text = document.createTextNode(message);
+            log_item.appendChild(log_text);
+            document.body.appendChild(log_item);
+        });
+    </script>
+</html>

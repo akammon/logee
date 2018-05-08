@@ -1,0 +1,22 @@
+{
+  "name": "logelf",
+  "version": "1.0.0",
+  "description": "a standalone log viewer application.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [
+    "log",
+    "tail",
+    "standalone",
+    "desktop",
+    "application"
+  ],
+  "author": "Yi",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^2.0.0"
+  }
+}
