@@ -1,7 +1,7 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 const url = require('url');
-
+const Tail = require('./lib/tail.js');
 
 let win;
 let logWin;
@@ -11,14 +11,14 @@ let logWin;
     win = new BrowserWindow({width: 800, height: 600});
 
     win.loadURL(url.format({
-      pathname: path.join(__dirname, 'index.html'),
+      pathname: path.join(__dirname, '/html/index.html'),
       protocol: 'file:',
       slashes: true
     }));
     
     win.webContents.on('did-finish-load', () => {
 
-      var Tail = require('./tail.js');
+      
       const tool = new Tail('server.log', 0);
       tool.tail();
       tool.on('log', (log) => {
@@ -34,7 +34,7 @@ let logWin;
     logWin = new BrowserWindow({width: 300, height: 150});
     
     logWin.loadURL(url.format({
-      pathname: path.join(__dirname, 'log.html'),
+      pathname: path.join(__dirname, '/html/log.html'),
       protocol: 'file:',
       slashes: true
     }));
