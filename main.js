@@ -41,7 +41,7 @@ let logWin;
     }));
 
     logWin.webContents.on('did-finish-load', () =>{
-      console.log(message);
+      //console.log(message);
       logWin.webContents.send('log:selected', message);
     }); 
   });
